@@ -1,93 +1,108 @@
 package main;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.EmptyBorder;
 
-
-
-import javax.swing.JLabel;
-
+@SuppressWarnings("serial")
 public class LottoFrame extends JFrame {
 
-	private JPanel contentPane;
+   private JPanel contentPane;
+   
+   public LottoFrame() {
+      setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      setBounds(2000, 100, 800, 800);
+      contentPane = new JPanel();
+      contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+      setContentPane(contentPane);
+      contentPane.setLayout(null);
+      
+      JLabel one = new JLabel("돈");
+      one.setFont(new Font("Dialog", Font.BOLD, 30));
+      one.setHorizontalAlignment(SwingConstants.CENTER);
+      one.setBounds(59, 46, 100, 100);
+      BevelBorder border=new BevelBorder(BevelBorder.RAISED);//3차원적인 테두리 효과를 위한것이고 양각의 옵션을 준다.
+      one.setBorder(border);//라벨에 적용시킨다.
+      contentPane.add(one);
+      
+      JLabel two = new JLabel("을");
+      two.setFont(new Font("Dialog", Font.BOLD, 30));
+      two.setHorizontalAlignment(SwingConstants.CENTER);
+      two.setBorder(border);
+      two.setBounds(174, 46, 100, 100);
+      contentPane.add(two);
+      
+      JLabel three = new JLabel("법");
+      three.setFont(new Font("Dialog", Font.BOLD, 30));
+      three.setHorizontalAlignment(SwingConstants.CENTER);
+      three.setBounds(286, 46, 100, 100);
+      three.setBorder(border);
+      contentPane.add(three);
+      
+      JLabel four = new JLabel("시");
+      four.setFont(new Font("Dialog", Font.BOLD, 30));
+      four.setHorizontalAlignment(SwingConstants.CENTER);
+      four.setBounds(401, 46, 100, 100);
+      four.setBorder(border);
+      contentPane.add(four);
+      
+      JLabel five = new JLabel("다");
+      five.setFont(new Font("Dialog", Font.BOLD, 30));
+      five.setHorizontalAlignment(SwingConstants.CENTER);
+      five.setBounds(513, 46, 100, 100);
+      five.setBorder(border);
+      contentPane.add(five);
+      
+      JLabel six = new JLabel("!!!");
+      six.setFont(new Font("Dialog", Font.BOLD, 30));
+      six.setHorizontalAlignment(SwingConstants.CENTER);
+      six.setBounds(628, 46, 100, 100);
+      six.setBorder(border);
+      contentPane.add(six);
+      
+      JButton choiceBtn = new JButton("로또번호 생성하기");
+      choiceBtn.addActionListener(new ActionListener() {
+         public void actionPerformed(ActionEvent e) {
+            
+            
+            Set<Integer> set = new HashSet<Integer>();
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					LottoFrame frame = new LottoFrame();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+              for (int i = 0; set.size() < 6; ++i) {
+                  int num = (int) (Math.random()*45) + 1;
+                  set.add((num));
+              }
 
-	/**
-	 * Create the frame.
-	 */
-	public LottoFrame() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1000, 1000);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
-		
-		JLabel one = new JLabel("New label");
-		one.setBounds(34, 16, 100, 100);
-		contentPane.add(one);
-		BevelBorder border=new BevelBorder(BevelBorder.RAISED);//3차원적인 테두리 효과를 위한것이고 양각의 옵션을 준다.
-		one.setBorder(border);//라벨에 적용시킨다.
-		  getContentPane().add(one);
-		  
-		  JLabel one2 = new JLabel("New label");
-			one2.setBounds(259, 19, 100, 100);
-			contentPane.add(one2);
-			BevelBorder border2=new BevelBorder(BevelBorder.RAISED);//3차원적인 테두리 효과를 위한것이고 양각의 옵션을 준다.
-			one2.setBorder(border2);//라벨에 적용시킨다.
-			  getContentPane().add(one2);
-			  
-			  JLabel one3 = new JLabel("New label");
-				one3.setBounds(499, 23, 100, 100);
-				contentPane.add(one3);
-				BevelBorder border3=new BevelBorder(BevelBorder.RAISED);//3차원적인 테두리 효과를 위한것이고 양각의 옵션을 준다.
-				one3.setBorder(border3);//라벨에 적용시킨다.
-				  getContentPane().add(one3);
-		
-				  JLabel one4 = new JLabel("New label");
-					one4.setBounds(383, 18, 100, 100);
-					contentPane.add(one4);
-					BevelBorder border4=new BevelBorder(BevelBorder.RAISED);//3차원적인 테두리 효과를 위한것이고 양각의 옵션을 준다.
-					one4.setBorder(border4);//라벨에 적용시킨다.
-					  getContentPane().add(one4);
-		
-					  JLabel one5 = new JLabel("New label");
-						one5.setBounds(633, 11, 100, 100);
-						contentPane.add(one5);
-						BevelBorder border5=new BevelBorder(BevelBorder.RAISED);//3차원적인 테두리 효과를 위한것이고 양각의 옵션을 준다.
-						one5.setBorder(border5);//라벨에 적용시킨다.
-						  getContentPane().add(one5);
-			
-						  JLabel one6 = new JLabel("New label");
-							one6.setBounds(149, 9, 100, 100);
-							contentPane.add(one6);
-							BevelBorder border6=new BevelBorder(BevelBorder.RAISED);//3차원적인 테두리 효과를 위한것이고 양각의 옵션을 준다.
-							one6.setBorder(border6);//라벨에 적용시킨다.
-							  getContentPane().add(one6);
-				
+              System.out.println("set >>> " + set);
 
-		
-
-		
-	}
+              List<Integer> list = new ArrayList<Integer>(set);
+              Collections.sort(list);
+              
+              one.setText(Integer.toString(list.get(0)));
+              two.setText(Integer.toString(list.get(1)));
+              three.setText(Integer.toString(list.get(2)));
+              four.setText(Integer.toString(list.get(3)));
+              five.setText(Integer.toString(list.get(4)));
+              six.setText(Integer.toString(list.get(5)));
+            
+         }
+      });
+      choiceBtn.setFont(new Font("Dialog", Font.BOLD, 30));
+      choiceBtn.setBounds(174, 204, 439, 76);
+      contentPane.add(choiceBtn);
+      
+   }
 }
+
